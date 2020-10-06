@@ -1,5 +1,12 @@
 ﻿#Requires -RunAsAdministrator
 
+if(Test-Path -Path "$PSScriptRoot\wsl2.tmp")
+{
+    & "$PSScriptRoot\wsl2_config.ps1"
+    Remove-Item -Path "$PSScriptRoot\wsl2.tmp"
+    Exit
+}
+
 #region     [Get system information]
 
 # [Reference](https://docs.microsoft.com/zh-tw/windows-hardware/manufacture/desktop/use-dism-in-windows-powershell-s14)
@@ -33,6 +40,7 @@ if ($WSL_Disabled)
     if ($WSL -eq "2")
     {
         Enable-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" -All -NoRestart | Out-Null
+        Write-Output "wsl2" > "$PSScriptRoot\wsl2.tmp"
         Write-Host "關閉此視窗，重新開機"
         Write-Host "重新開機後再執行一次此腳本"
         Read-Host
@@ -42,17 +50,6 @@ if ($WSL_Disabled)
     Write-Host "關閉此視窗並重新開機"
     Read-Host
     Exit
-}
-
-if ($WSL -eq "2")
-{
-    $LASTEXITCODE = 0
-    wsl --set-default-version 2
-    if ($LASTEXITCODE -ne 0)
-    {
-        Invoke-WebRequest -Uri "https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" -OutFile "${Env:TMP}\wsl_update_x64.msi"
-        msiexec /i "${Env:TMP}\wsl_update_x64.msi" /quiet
-    }
 }
 
 
