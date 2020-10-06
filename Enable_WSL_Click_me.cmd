@@ -24,5 +24,5 @@ set "CMDScriptRoot=%CMDScriptRoot:~0,-1%"
 :::::::::::::::: Check and Get Administrator permission ::::::::::::::::  
 
 
-powershell -ExecutionPolicy Unrestricted -NoProfile -Command "& %CMDScriptRoot%\scripts\script.ps1"
+powershell.exe -ExecutionPolicy Bypass -File "%CMDScriptRoot%\scripts\script.ps1"
 pause
