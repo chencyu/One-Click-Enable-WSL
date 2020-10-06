@@ -15,6 +15,7 @@ if %errorlevel% == 0 (
 :: run Start-Process with RunAs at this batch file in powershell  
 set "ThisBatch=%~fp0"  
 powershell.exe -NoProfile -Command Start-Process cmd -Verb RunAs -ArgumentList ("'/c'","'%ThisBatch%'")  
+exit /b 0  
   
 :MainProg  
 set "CMDScriptRoot=%~dp0"  
