@@ -36,10 +36,10 @@ do
 
 if ($WSL_Disabled)
 {
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -All -NoRestart | Out-Null
+    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -All -NoRestart
     if ($WSL -eq "2")
     {
-        Enable-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" -All -NoRestart | Out-Null
+        Enable-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" -All -NoRestart
         Write-Output "wsl2" > "$PSScriptRoot\wsl2.tmp"
         Write-Host "關閉此視窗，重新開機"
         Write-Host "重新開機後再執行一次此腳本"
