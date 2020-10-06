@@ -12,10 +12,10 @@ $WinVer = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVe
 do
 {
     $WSL = "1"
-    if ($WinVer -le 2004)
+    if ([Int32]$WinVer -ge 2004)
     {
         # WSL2 only support version above 2004 on win10
-        $WSL = Read-Host -Prompt "[WSL1 或 WSL2 ?] (1/2)"
+        $WSL = Read-Host -Prompt "[請問要安裝 WSL1 還是 WSL2 ?] (1/2)"
     }
 
 
