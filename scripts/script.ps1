@@ -53,7 +53,7 @@ if ($WSL_Disabled)
 }
 
 
-Write-Host "完成！"
+Write-Host "已經完成安裝WSL！"
 Start-Sleep -Seconds 1
 Write-Host "請至 Microsoft Store下載自己需要的 Linux 發行版"
 Write-Host "Ex. Ubuntu, Kali Linux ... 等等"
