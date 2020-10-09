@@ -5,7 +5,7 @@ $DistroURL = `
     Ubuntu1804="https://aka.ms/wsl-ubuntu-1804";
     Ubuntu2004="https://aka.ms/wslubuntu2004";
     Debian    ="https://aka.ms/wsl-debian-gnulinux";
-    KaliLinux ="https://aka.ms/wsl-kali-linux-new";
+    Kali      ="https://aka.ms/wsl-kali-linux-new";
 }
 
 $DistroList = `
@@ -35,4 +35,4 @@ Write-Host "`n安裝中...`n"
 Add-AppxPackage -Path $DistroAppx
 Remove-Item -Path $DistroAppx
 
-Start-Process -FilePath "wsl.exe" -ArgumentList 
+Start-Process -FilePath "$Distro.exe"
