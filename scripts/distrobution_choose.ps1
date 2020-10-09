@@ -28,16 +28,16 @@ do
 } while($abort)
 
 
-$WarningPreferenceBak = $WarningPreference
-$WarningPreference = 'SilentlyContinue'
+$ErrorActionPreferenceBak = $ErrorActionPreference
+$ErrorActionPreference = 'SilentlyContinue'
 if (Get-Command -Name "$Distro")
 {
     Write-Host "已經安裝 $Distro 了！"
     Write-Host "終止程式..."
-    $WarningPreference = $WarningPreferenceBak
+    $ErrorActionPreference = $ErrorActionPreferenceBak
     Exit
 }
-$WarningPreference = $WarningPreferenceBak
+$ErrorActionPreference = $ErrorActionPreferenceBak
 
 
 $ProgressPreferenceBak = $ProgressPreference
