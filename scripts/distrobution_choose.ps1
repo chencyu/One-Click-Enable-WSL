@@ -1,4 +1,4 @@
-
+﻿
 $DistroURL = `
 @{
     Ubuntu1604="https://aka.ms/wsl-ubuntu-1604";

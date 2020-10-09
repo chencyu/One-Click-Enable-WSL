@@ -1,4 +1,4 @@
-#Requires -RunAsAdministrator
+﻿#Requires -RunAsAdministrator
 
 $LASTEXITCODE = 0
 wsl --set-default-version 2
