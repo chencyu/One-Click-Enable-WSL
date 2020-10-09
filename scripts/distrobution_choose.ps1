@@ -28,6 +28,17 @@ do
 } while($abort)
 
 
+$WarningPreferenceBak = $WarningPreference
+$WarningPreference = 'SilentlyContinue'
+if (Get-Command -Name "$Distro")
+{
+    Write-Host "已經安裝 $Distro 了！"
+    Write-Host "終止程式..."
+    $WarningPreference = $WarningPreferenceBak
+    Exit
+}
+$WarningPreference = $WarningPreferenceBak
+
 $ProgressPreference = 'SilentlyContinue'
 Write-Host "`n下載中...`n"
 Invoke-WebRequest -Uri $DistroURL.$Distro -OutFile $DistroAppx -UseBasicParsing
