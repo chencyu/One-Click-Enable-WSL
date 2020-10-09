@@ -39,11 +39,16 @@ if (Get-Command -Name "$Distro")
 }
 $WarningPreference = $WarningPreferenceBak
 
+
+$ProgressPreferenceBak = $ProgressPreference
 $ProgressPreference = 'SilentlyContinue'
 Write-Host "`n下載中...`n"
 Invoke-WebRequest -Uri $DistroURL.$Distro -OutFile $DistroAppx -UseBasicParsing
 Write-Host "`n安裝中...`n"
 Add-AppxPackage -Path $DistroAppx
+$ProgressPreference = $ProgressPreferenceBak
+
 Remove-Item -Path $DistroAppx
+
 
 Start-Process -FilePath "$Distro.exe"
